@@ -46,6 +46,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+
     private fun isValidCredentials(email: String, password: String): Boolean {
         // Implementasikan validasi email dan password sesuai kebutuhan Anda
         // Anda bisa melakukan validasi dengan membandingkan email dan password dengan data yang benar
