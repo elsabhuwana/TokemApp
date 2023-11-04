@@ -53,3 +53,4 @@ class LoginActivity : AppCompatActivity() {
         return email == "contoh@email.com" && password == "password123"
     }
 }
+
