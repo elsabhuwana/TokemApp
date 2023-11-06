@@ -8,7 +8,6 @@
     android:padding="16dp"
     tools:context=".RegisterActivity">
 
-
     <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
@@ -74,10 +73,11 @@
 
     <Button
         android:id="@+id/buttonRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="255dp"
+        android:layout_height="59dp"
         android:layout_below="@id/editTextConfirmPassword"
         android:layout_marginTop="32dp"
+        android:layout_centerHorizontal="true"
         android:text="Daftar"/>
 
 </RelativeLayout>

@@ -28,7 +28,7 @@
         app:srcCompat="@drawable/tokem" />
 
     <Button
-        android:id="@+id/buttonLogin1"
+        android:id="@+id/buttonLogin"
         android:layout_width="255dp"
         android:layout_height="59dp"
         android:layout_below="@id/imageView"
@@ -37,10 +37,10 @@
         android:text="Login" />
 
     <Button
-        android:id="@+id/buttonRegister1"
+        android:id="@+id/buttonRegister"
         android:layout_width="255dp"
         android:layout_height="59dp"
-        android:layout_below="@id/buttonLogin1"
+        android:layout_below="@id/buttonLogin"
         android:layout_marginTop="12dp"
         android:layout_centerHorizontal="true"
         android:text="Register" />
