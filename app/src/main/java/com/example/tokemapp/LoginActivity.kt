@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
 
             if (isValidCredentials(email, password)) {
                 // Jika login berhasil, pindah ke aktivitas berikutnya
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, RegisterActivity::class.java)
                 startActivity(intent)
             } else {
                 // Jika login gagal, tampilkan pesan kesalahan
@@ -45,7 +45,6 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 
     private fun isValidCredentials(email: String, password: String): Boolean {
         // Implementasikan validasi email dan password sesuai kebutuhan Anda
