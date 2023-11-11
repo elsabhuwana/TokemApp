@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
+
+
     private lateinit var loginButton: Button
     private lateinit var registerButton: Button
 
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         registerButton.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+
+
         }
     }
 }

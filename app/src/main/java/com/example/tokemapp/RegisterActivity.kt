@@ -3,12 +3,17 @@ package com.example.tokemapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.tokemapp.R
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 
 class RegisterActivity : AppCompatActivity() {
+    val db = Firebase.firestore
+
 
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
