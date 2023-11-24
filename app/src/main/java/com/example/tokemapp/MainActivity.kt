@@ -7,7 +7,6 @@ import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
 
-
     private lateinit var loginButton: Button
     private lateinit var registerButton: Button
 

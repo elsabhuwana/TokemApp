@@ -37,7 +37,7 @@ class RegisterActivity : AppCompatActivity() {
             if (isValidRegistration(email, password, confirmPassword)) {
                 // Simpan data pendaftaran atau pindah ke aktivitas lain
                 Toast.makeText(this, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show()
-                // Tambahkan logika untuk menyimpan data pengguna ke database atau backend di sini
+                // Tambahkan logika untuk menyimpan data pengguna ke database
             } else {
                 // Jika pendaftaran gagal, tampilkan pesan kesalahan
                 Toast.makeText(this, "Pendaftaran gagal. Pastikan semua isian benar.", Toast.LENGTH_SHORT).show()
@@ -46,7 +46,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun isValidRegistration(email: String, password: String, confirmPassword: String): Boolean {
-        // Implementasikan validasi email, password, dan konfirmasi password sesuai kebutuhan Anda
+        // Implementasikan validasi email, password, dan konfirmasi password sesuai kebutuhan
         // Anda bisa melakukan validasi seperti memeriksa apakah email valid dan apakah password dan konfirmasi password sesuai
         return email.isNotEmpty() && password.isNotEmpty() && password == confirmPassword
     }
