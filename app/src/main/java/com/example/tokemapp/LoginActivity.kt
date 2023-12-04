@@ -6,13 +6,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.tokemapp.MainActivity
-import com.example.tokemapp.R
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 
 class LoginActivity : AppCompatActivity() {
-    val db = Firebase.firestore
+    val db = com.google.firebase.Firebase.firestore
 
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.Toast
-class BerandaActivity : AppCompatActivity(), BungaItemClickListener() {
+class BerandaActivity : AppCompatActivity(), BungaItemClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: BungaAdapter
