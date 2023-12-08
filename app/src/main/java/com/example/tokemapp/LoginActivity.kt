@@ -9,10 +9,12 @@ import android.widget.Toast
 import com.example.tokemapp.MainActivity
 import com.example.tokemapp.R
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
 
 class LoginActivity : AppCompatActivity() {
     val db = Firebase.firestore
+    lateinit var firebaseLogin: FirebaseAuth
 
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
@@ -23,6 +25,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        firebaseLogin = FirebaseAuth.getInstance()
+
         emailEditText = findViewById(R.id.editTextEmail)
         passwordEditText = findViewById(R.id.editTextPassword)
         loginButton = findViewById(R.id.buttonLogin)
@@ -31,15 +35,16 @@ class LoginActivity : AppCompatActivity() {
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
-
-            if (isValidCredentials(email, password)) {
                 // Jika login berhasil, pindah ke aktivitas berikutnya (misalnya, MainActivity)
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            } else {
-                // Jika login gagal, tampilkan pesan kesalahan
-                Toast.makeText(this, "Login gagal. Coba lagi.", Toast.LENGTH_SHORT).show()
-            }
+                firebaseLogin.signInWithEmailAndPassword(email,password).addOnSuccessListener {
+                    Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, BerandaActivity::class.java)
+                    startActivity(intent)
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Login Gagal", Toast.LENGTH_SHORT).show()
+                }
+
+
         }
 
         registerButton.setOnClickListener {

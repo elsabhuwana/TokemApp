@@ -5,20 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.Toast
-class BerandaActivity : AppCompatActivity(), BungaItemClickListener() {
+class BerandaActivity : AppCompatActivity(){
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: BungaAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_beranda)
 
         recyclerView = findViewById(R.id.recyclerView)
-        adapter = BungaAdapter(this)
 
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+
+
 
         // Inisialisasi daftar bunga
         val listBunga = listOf(
@@ -33,15 +32,12 @@ class BerandaActivity : AppCompatActivity(), BungaItemClickListener() {
         )
 
         // Set daftar bunga ke adapter
-        adapter.flowerList = listBunga
 
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-    override fun onItemClick(flower: ListBunga, quantity: Int) {
-        // Implementasikan logika ketika item diklik
-        // Contoh: Tambahkan bunga ke keranjang, tampilkan dialog, dll.
-        Toast.makeText(this, "Bunga ${flower.nama} ditambahkan ke keranjang ($quantity pcs)", Toast.LENGTH_SHORT).show()
-    }
+//    override fun onItemClick(flower: ListBunga, quantity: Int) {
+//        // Implementasikan logika ketika item diklik
+//        // Contoh: Tambahkan bunga ke keranjang, tampilkan dialog, dll.
+//        Toast.makeText(this, "Bunga ${flower.nama} ditambahkan ke keranjang ($quantity pcs)", Toast.LENGTH_SHORT).show()
+//    }
 }
