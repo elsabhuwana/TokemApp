@@ -3,6 +3,7 @@ package com.example.tokemapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -34,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
 
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()
-            val password = passwordEditText.text.toString()
+            val password =passwordEditText.text.toString()
                 // Jika login berhasil, pindah ke aktivitas berikutnya (misalnya, MainActivity)
                 firebaseLogin.signInWithEmailAndPassword(email,password).addOnSuccessListener {
                     Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
@@ -42,6 +43,7 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(intent)
                 }.addOnFailureListener {
                     Toast.makeText(this, "Login Gagal", Toast.LENGTH_SHORT).show()
+                    Log.e("error",it.toString())
                 }
 
 
