@@ -1,20 +1,44 @@
 package com.example.tokemapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 class BerandaActivity : AppCompatActivity(){
 
-    private lateinit var recyclerView: RecyclerView
-
+    lateinit var bottomNav: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_beranda)
+        bottomNav = findViewById(R.id.bottomNavigationView)
+        val berandaFrag = BerandaFragment()
+        val keranjangFrag = KeranjangFragment()
+        val inboxFrag = InboxFragment()
+        val accountFrag = AccountFragment()
 
-        recyclerView = findViewById(R.id.recyclerView)
+        bottomNav.setOnItemReselectedListener {
+            when(it.itemId){
+                R.id.beranda -> changeFragment(berandaFrag)
+                R.id.keranjang -> changeFragment(keranjangFrag)
+                R.id.inbox -> changeFragment(inboxFrag)
+                R.id.akun -> changeFragment(accountFrag)
+
+                else -> {
+                    val gagal =Intent(this,BerandaActivity::class.java)
+                    startActivity(gagal)
+                }
+            }
+
+            true
+        }
+
+
 
 
 
@@ -35,9 +59,12 @@ class BerandaActivity : AppCompatActivity(){
 
     }
 
-//    override fun onItemClick(flower: ListBunga, quantity: Int) {
-//        // Implementasikan logika ketika item diklik
-//        // Contoh: Tambahkan bunga ke keranjang, tampilkan dialog, dll.
-//        Toast.makeText(this, "Bunga ${flower.nama} ditambahkan ke keranjang ($quantity pcs)", Toast.LENGTH_SHORT).show()
-//    }
+    fun changeFragment(fragment: Fragment){
+        val fragmentManager = supportFragmentManager
+        val transaksi = fragmentManager.beginTransaction()
+
+        transaksi.replace(R.id.fragmentContainerView,fragment)
+        transaksi.commit()
+    }
+
 }
