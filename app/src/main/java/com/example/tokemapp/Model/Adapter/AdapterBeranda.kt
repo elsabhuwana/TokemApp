@@ -2,18 +2,21 @@ package com.example.tokemapp.Model.Adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tokemapp.Model.ListBunga
 import com.example.tokemapp.R
+import com.example.tokemapp.View.Fragment.DetailBungaFragment
 import com.example.tokemapp.ViewModel.BungaViewModel
 
-class AdapterBeranda (val list:List<ListBunga>, val konteks: Context, val viewmodel: BungaViewModel): RecyclerView.Adapter<AdapterBeranda.BerandaViewHolder>() {
+class AdapterBeranda (val list:List<ListBunga>, val konteks: Context, val viewmodel: BungaViewModel,val fragment:FragmentManager): RecyclerView.Adapter<AdapterBeranda.BerandaViewHolder>() {
 
     class BerandaViewHolder(baris: View): RecyclerView.ViewHolder(baris){
         val tvNamaBunga = baris.findViewById<TextView>(R.id.textViewNamaBunga)
@@ -52,6 +55,19 @@ class AdapterBeranda (val list:List<ListBunga>, val konteks: Context, val viewmo
         holder.decrementButton.setOnClickListener {
             viewmodel.decrement(position,konteks)
             notifyDataSetChanged()
+        }
+
+        holder.gambarBunga.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("deskripsi",binding.deskripsi)
+            bundle.putInt("harga",binding.harga)
+            val detailFragment = DetailBungaFragment()
+            val transaksi = fragment.beginTransaction()
+            transaksi.replace(R.id.fragmentContainerView,detailFragment)
+            detailFragment.arguments = bundle
+            transaksi.addToBackStack(null)
+            transaksi.commit()
+
         }
 
 

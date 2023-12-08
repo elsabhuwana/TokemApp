@@ -5,10 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.tokemapp.Model.Adapter.AdapterReview
+import com.example.tokemapp.Model.listReview
 import com.example.tokemapp.R
 
 
 class DetailBungaFragment : Fragment() {
+    lateinit var tvDeskripsi : TextView
+    lateinit var tvHarga : TextView
+    lateinit var recylerViewReview: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,5 +33,18 @@ class DetailBungaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        tvDeskripsi = view.findViewById(R.id.tvdeskripsiBunga)
+        tvHarga = view.findViewById(R.id.tvHargaBunga)
+        recylerViewReview = view.findViewById(R.id.recylerReviews)
+
+        recylerViewReview.layoutManager = LinearLayoutManager(requireContext())
+        recylerViewReview.adapter = AdapterReview(listReview,requireContext())
+
+        val deskripsi = arguments?.getString("deskripsi")
+        val harga = arguments?.getInt("harga")
+
+        tvDeskripsi.text = deskripsi
+        tvHarga.text = "Rp. ${harga.toString()}"
+
     }
 }

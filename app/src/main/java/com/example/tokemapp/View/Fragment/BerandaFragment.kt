@@ -36,7 +36,7 @@ class BerandaFragment : Fragment() {
 
         bungaViewModel.listBungacuy.observe(viewLifecycleOwner){newValue ->
             recylerBeranda.layoutManager = LinearLayoutManager(requireContext())
-            recylerBeranda.adapter = AdapterBeranda(listBunga,requireContext(),bungaViewModel)
+            recylerBeranda.adapter = AdapterBeranda(listBunga,requireContext(),bungaViewModel,requireActivity().supportFragmentManager)
         }
 
 
