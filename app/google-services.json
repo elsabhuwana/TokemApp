@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "767389377353",
+    "firebase_url": "https://tokemapp-default-rtdb.firebaseio.com",
+    "project_id": "tokemapp",
+    "storage_bucket": "tokemapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767389377353:android:8b661ac46ca986341d3098",
+        "android_client_info": {
+          "package_name": "com.example.tokemapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgcQWzE6DRUs4TnDsR9pYqQ7_lK9XM1-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
