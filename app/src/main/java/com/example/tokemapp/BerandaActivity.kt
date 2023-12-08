@@ -33,6 +33,7 @@ class BerandaActivity : AppCompatActivity(){
                     val gagal =Intent(this,BerandaActivity::class.java)
                     startActivity(gagal)
                 }
+
             }
 
             true
@@ -44,16 +45,7 @@ class BerandaActivity : AppCompatActivity(){
 
 
         // Inisialisasi daftar bunga
-        val listBunga = listOf(
-            ListBunga("Mawar", R.drawable.mawarputih, "Deskripsi Mawar]", 10000, 20),
-            ListBunga("Tulip", R.drawable.tulip, "Deskripsi Tulip", 12000, 15),
-            ListBunga("Mawar", R.drawable.mawarmerah, "Deskripsi Mawar", 10000, 20),
-            ListBunga("Mawar", R.drawable.matahari, "Deskripsi Mawar", 10000, 20),
-            ListBunga("Mawar", R.drawable.mawarputih, "Deskripsi Mawar", 10000, 20),
-            ListBunga("Mawar", R.drawable.pinktulip, "Deskripsi Mawar", 10000, 20),
-            ListBunga("Mawar", R.drawable.chamomile, "Deskripsi Mawar", 10000, 20),
-            ListBunga("Mawar", R.drawable.lili, "Deskripsi Mawar", 10000, 20)
-        )
+
 
         // Set daftar bunga ke adapter
 
@@ -63,8 +55,7 @@ class BerandaActivity : AppCompatActivity(){
         val fragmentManager = supportFragmentManager
         val transaksi = fragmentManager.beginTransaction()
 
-        transaksi.replace(R.id.fragmentContainerView,fragment)
-        transaksi.commit()
+        transaksi.replace(R.id.fragmentContainerView,fragment).commit()
     }
 
 }

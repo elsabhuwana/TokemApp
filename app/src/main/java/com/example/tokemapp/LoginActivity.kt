@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
 
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()
-            val password =passwordEditText.text.toString()
+            val password=passwordEditText.text.toString()
                 // Jika login berhasil, pindah ke aktivitas berikutnya (misalnya, MainActivity)
                 firebaseLogin.signInWithEmailAndPassword(email,password).addOnSuccessListener {
                     Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
