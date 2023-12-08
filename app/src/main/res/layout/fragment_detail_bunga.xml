@@ -69,7 +69,7 @@
         app:layout_constraintVertical_bias="0.324" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnAddChart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add to cart"
@@ -117,7 +117,7 @@
         app:layout_constraintGuide_begin="603dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnTulisReview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tulis Review dan beri rating"

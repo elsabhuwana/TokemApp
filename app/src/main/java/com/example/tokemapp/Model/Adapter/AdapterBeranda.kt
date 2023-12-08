@@ -10,10 +10,14 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.replace
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tokemapp.Model.ListBunga
+import com.example.tokemapp.Model.ReviewModel
 import com.example.tokemapp.R
 import com.example.tokemapp.View.Fragment.DetailBungaFragment
+import com.example.tokemapp.View.Fragment.KeranjangFragment
+import com.example.tokemapp.View.Fragment.ReviewFragment
 import com.example.tokemapp.ViewModel.BungaViewModel
 
 class AdapterBeranda (val list:List<ListBunga>, val konteks: Context, val viewmodel: BungaViewModel,val fragment:FragmentManager): RecyclerView.Adapter<AdapterBeranda.BerandaViewHolder>() {
@@ -23,7 +27,8 @@ class AdapterBeranda (val list:List<ListBunga>, val konteks: Context, val viewmo
         val tvHargaBunga = baris.findViewById<TextView>(R.id.textViewHarga)
         val tvStockBunga = baris.findViewById<TextView>(R.id.textViewStok)
         val gambarBunga = baris.findViewById<ImageView>(R.id.GambarBunga)
-        val btnTambah = baris.findViewById<Button>(R.id.buttonTambah)
+        val btnTambah = baris.findViewById<Button>(R.id.btnAddChart)
+        val btnTulisReview = baris.findViewById<Button>(R.id.btnTulisReview)
         val incrementButton = baris.findViewById<Button>(R.id.btnTambah)
         val decrementButton = baris.findViewById<Button>(R.id.btnMinus)
         val tvCounter = baris.findViewById<TextView>(R.id.tvCounter)
@@ -70,14 +75,25 @@ class AdapterBeranda (val list:List<ListBunga>, val konteks: Context, val viewmo
 
         }
 
+        holder.btnTambah.setOnClickListener {
+            val keranjangBeli = KeranjangFragment()
+            val transaksi = fragment.beginTransaction()
+            transaksi.replace(R.id.fragmentContainerView,keranjangBeli)
+            transaksi.addToBackStack(null)
+            transaksi.commit()
+        }
+
+        holder.btnTulisReview.setOnClickListener {
+            val reviewFragment = ReviewFragment()
+            val transaksi = fragment.beginTransaction()
+            transaksi.replace(R.id.fragmentContainerView,reviewFragment)
+            transaksi.addToBackStack(null)
+            transaksi.commit()
+        }
+
 
 
         holder.tvCounter.text = binding.counter.toString()
-
-
-
-
-
 
 
     }
