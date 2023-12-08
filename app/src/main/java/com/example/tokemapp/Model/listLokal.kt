@@ -1,4 +1,6 @@
-package com.example.tokemapp
+package com.example.tokemapp.Model
+
+import com.example.tokemapp.R
 
 val listBunga: MutableList<ListBunga> = mutableListOf(
     ListBunga("Mawar", R.drawable.mawarputih, "Deskripsi Mawar]", 10000, 20),

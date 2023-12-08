@@ -1,9 +1,8 @@
-package com.example.tokemapp
+package com.example.tokemapp.View.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -44,7 +43,7 @@ class RegisterActivity : AppCompatActivity() {
                 // Tambahkan logika untuk menyimpan data pengguna ke database
                 firebaseAuthReg.createUserWithEmailAndPassword(email,password).addOnSuccessListener {
                     Toast.makeText(this, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show()
-                    val pindah = Intent(this,LoginActivity::class.java)
+                    val pindah = Intent(this, LoginActivity::class.java)
                     startActivity(pindah)
                 }.addOnFailureListener {
                     Toast.makeText(this, "Pendaftaran Gagal", Toast.LENGTH_SHORT).show()

@@ -1,12 +1,14 @@
-package com.example.tokemapp
+package com.example.tokemapp.View.Activity
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.tokemapp.View.Fragment.AccountFragment
+import com.example.tokemapp.R
+import com.example.tokemapp.View.Fragment.BerandaFragment
+import com.example.tokemapp.View.Fragment.InboxFragment
+import com.example.tokemapp.View.Fragment.KeranjangFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BerandaActivity : AppCompatActivity(){
@@ -22,7 +24,7 @@ class BerandaActivity : AppCompatActivity(){
         val inboxFrag = InboxFragment()
         val accountFrag = AccountFragment()
 
-        bottomNav.setOnItemReselectedListener {
+        bottomNav.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.beranda -> changeFragment(berandaFrag)
                 R.id.keranjang -> changeFragment(keranjangFrag)
@@ -30,7 +32,7 @@ class BerandaActivity : AppCompatActivity(){
                 R.id.akun -> changeFragment(accountFrag)
 
                 else -> {
-                    val gagal =Intent(this,BerandaActivity::class.java)
+                    val gagal =Intent(this, BerandaActivity::class.java)
                     startActivity(gagal)
                 }
 

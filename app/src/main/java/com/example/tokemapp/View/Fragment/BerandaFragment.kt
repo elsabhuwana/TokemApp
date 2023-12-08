@@ -1,16 +1,22 @@
-package com.example.tokemapp
+package com.example.tokemapp.View.Fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tokemapp.Model.Adapter.AdapterBeranda
+import com.example.tokemapp.Model.listBunga
+import com.example.tokemapp.R
+import com.example.tokemapp.ViewModel.BungaViewModel
 
 
 class BerandaFragment : Fragment() {
     lateinit var recylerBeranda: RecyclerView
+    val bungaViewModel : BungaViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,7 +34,11 @@ class BerandaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recylerBeranda = view.findViewById(R.id.recyclerberanda)
 
-        recylerBeranda.layoutManager = LinearLayoutManager(requireContext())
-        recylerBeranda.adapter = AdapterBeranda(listBunga,requireContext())
+        bungaViewModel.listBungacuy.observe(viewLifecycleOwner){newValue ->
+            recylerBeranda.layoutManager = LinearLayoutManager(requireContext())
+            recylerBeranda.adapter = AdapterBeranda(listBunga,requireContext(),bungaViewModel)
+        }
+
+
     }
 }
