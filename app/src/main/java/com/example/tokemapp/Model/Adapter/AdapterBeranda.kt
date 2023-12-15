@@ -17,6 +17,7 @@ import com.example.tokemapp.Model.ReviewModel
 import com.example.tokemapp.R
 import com.example.tokemapp.View.Fragment.DetailBungaFragment
 import com.example.tokemapp.View.Fragment.KeranjangFragment
+import com.example.tokemapp.View.Fragment.PembelianFragment
 import com.example.tokemapp.View.Fragment.ReviewFragment
 import com.example.tokemapp.ViewModel.BungaViewModel
 
@@ -30,6 +31,7 @@ class AdapterBeranda (val list:List<ListBunga>, val konteks: Context, val viewmo
         val incrementButton = baris.findViewById<Button>(R.id.btnTambah)
         val decrementButton = baris.findViewById<Button>(R.id.btnMinus)
         val tvCounter = baris.findViewById<TextView>(R.id.tvCounter)
+        val btnTambah = baris.findViewById<Button>(R.id.buttonTambah)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BerandaViewHolder {
@@ -62,8 +64,11 @@ class AdapterBeranda (val list:List<ListBunga>, val konteks: Context, val viewmo
 
         holder.gambarBunga.setOnClickListener {
             val bundle = Bundle()
+            bundle.putString("judul",binding.nama)
             bundle.putString("deskripsi",binding.deskripsi)
             bundle.putInt("harga",binding.harga)
+            bundle.putString("gambar",binding.gambarResId.toString())
+            bundle.putInt("counter",binding.counter)
             val detailFragment = DetailBungaFragment()
             val transaksi = fragment.beginTransaction()
             transaksi.replace(R.id.fragmentContainerView,detailFragment)
@@ -77,6 +82,20 @@ class AdapterBeranda (val list:List<ListBunga>, val konteks: Context, val viewmo
 
 
         holder.tvCounter.text = binding.counter.toString()
+
+        holder.btnTambah.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putInt("counter",binding.counter)
+            bundle.putString("judul",binding.nama)
+            bundle.putString("deskripsi",binding.deskripsi)
+            bundle.putInt("harga",binding.harga)
+            val transaksi = fragment.beginTransaction()
+            val toPembelianFrag = PembelianFragment()
+            toPembelianFrag.arguments = bundle
+            transaksi.replace(R.id.fragmentContainerView,toPembelianFrag)
+            transaksi.addToBackStack(null)
+            transaksi.commit()
+        }
 
 
     }

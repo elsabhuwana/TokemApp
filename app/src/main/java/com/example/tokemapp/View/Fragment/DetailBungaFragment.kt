@@ -45,9 +45,11 @@ class DetailBungaFragment : Fragment() {
 
         recylerViewReview.layoutManager = LinearLayoutManager(requireContext())
         recylerViewReview.adapter = AdapterReview(listReview,requireContext())
-
+        val judul = arguments?.getString("judul")
         val deskripsi = arguments?.getString("deskripsi")
         val harga = arguments?.getInt("harga")
+        val counter = arguments?.getInt("counter")
+        val gambar = arguments?.getString("gambar")
 
         tvDeskripsi.text = deskripsi
         tvHarga.text = "Rp. ${harga.toString()}"
@@ -61,10 +63,18 @@ class DetailBungaFragment : Fragment() {
         }
 
         btnAddAchar.setOnClickListener {
+            val bundle =Bundle()
+            bundle.putString("judul",judul)
+            bundle.putString("deskripsi",deskripsi)
+            bundle.putInt("harga",harga!!.toInt())
+            bundle.putInt("counter",counter!!)
+            bundle.putString("gambar",gambar)
             val keranjangFragment = PembelianFragment()
             val transaksi = requireActivity().supportFragmentManager.beginTransaction()
+            keranjangFragment.arguments = bundle
             transaksi.replace(R.id.fragmentContainerView,keranjangFragment)
             transaksi.addToBackStack(null)
+
             transaksi.commit()
         }
 

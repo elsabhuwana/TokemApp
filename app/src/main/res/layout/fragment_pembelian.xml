@@ -8,15 +8,19 @@
     tools:context=".View.Fragment.PembelianFragment">
 
     <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:id="@+id/KembaliBeli"
+        android:layout_width="54dp"
+        android:layout_height="48dp"
+        app:icon="@drawable/baseline_keyboard_backspace_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="50dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline14"
@@ -42,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="212dp" />
+        app:layout_constraintGuide_begin="199dp" />
 
     <ImageView
         android:id="@+id/imageView10"
@@ -54,7 +58,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/tvNamaBungaBeli"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -64,16 +68,16 @@
         app:layout_constraintTop_toTopOf="@+id/imageView10" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/tvDeskripsiBungaBeli"
         android:layout_width="wrap_content"
-        android:layout_height="15dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/imageView10"
         app:layout_constraintEnd_toEndOf="@+id/imageView9"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="@+id/tvNamaBungaBeli"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamaBungaBeli"
         app:layout_constraintVertical_bias="0.278" />
 
     <ImageView
@@ -83,49 +87,51 @@
         android:src="@drawable/bgincrement"
         app:layout_constraintBottom_toBottomOf="@+id/imageView9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDeskripsiBungaBeli" />
 
     <Button
-        android:id="@+id/button6"
-        android:layout_width="40dp"
+        android:id="@+id/btnIncrementBeli"
+        android:layout_width="39dp"
         android:layout_height="41dp"
         android:text="Button"
         app:icon="@drawable/baseline_add_circle_outline_24"
         app:iconGravity="textStart"
-        app:iconSize="26dp"
+        app:iconPadding="0dp"
+        app:iconSize="32dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView11"
         app:layout_constraintStart_toStartOf="@+id/imageView11"
         app:layout_constraintTop_toTopOf="@+id/imageView11"
         tools:ignore="TouchTargetSizeCheck" />
 
     <Button
-        android:id="@+id/button7"
-        android:layout_width="40dp"
-        android:layout_height="41dp"
+        android:id="@+id/btnDecrementBeli"
+        android:layout_width="34dp"
+        android:layout_height="39dp"
         android:text="Button"
         app:icon="@drawable/baseline_remove_24"
         app:iconGravity="textStart"
+        app:iconPadding="0dp"
         app:iconSize="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button6"
+        app:layout_constraintBottom_toBottomOf="@+id/btnIncrementBeli"
         app:layout_constraintEnd_toEndOf="@+id/imageView11"
         app:layout_constraintHorizontal_bias="0.81"
-        app:layout_constraintStart_toEndOf="@+id/button6"
-        app:layout_constraintTop_toTopOf="@+id/button6"
+        app:layout_constraintStart_toEndOf="@+id/btnIncrementBeli"
+        app:layout_constraintTop_toTopOf="@+id/btnIncrementBeli"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/tvCounterBeli"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView11"
-        app:layout_constraintEnd_toStartOf="@+id/button7"
-        app:layout_constraintStart_toEndOf="@+id/button6"
+        app:layout_constraintEnd_toStartOf="@+id/btnDecrementBeli"
+        app:layout_constraintStart_toEndOf="@+id/btnIncrementBeli"
         app:layout_constraintTop_toTopOf="@+id/imageView11" />
 
     <EditText
-        android:id="@+id/editTextText5"
+        android:id="@+id/editNamaBeli"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -138,25 +144,25 @@
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/editTextText6"
+        android:id="@+id/editAlamatBeli"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Masukkan Alamat"
         android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/editTextText5"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText5"
+        app:layout_constraintStart_toStartOf="@+id/editNamaBeli"
+        app:layout_constraintTop_toBottomOf="@+id/editNamaBeli"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/editTextText7"
+        android:id="@+id/editNomorHpBeli"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Masukkan Nomor Hp"
         android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/editTextText6"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText6"
+        app:layout_constraintStart_toStartOf="@+id/editAlamatBeli"
+        app:layout_constraintTop_toBottomOf="@+id/editAlamatBeli"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
@@ -166,12 +172,12 @@
         android:text="Harga"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/editTextText7"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText7"
+        app:layout_constraintStart_toStartOf="@+id/editNomorHpBeli"
+        app:layout_constraintTop_toBottomOf="@+id/editNomorHpBeli"
         app:layout_constraintVertical_bias="0.13" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/tvHargaTotalBeli"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rp 50000"
@@ -181,4 +187,14 @@
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toTopOf="@+id/textView12" />
+
+    <Button
+        android:id="@+id/btnBeli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Checkout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvHargaTotalBeli"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,3 +24,8 @@ val listReview: MutableList<ReviewModel> = mutableListOf(
     ReviewModel(),
 
 )
+
+val listkeranjang: MutableList<KeranjangModel> = mutableListOf(
+
+
+)
