@@ -9,15 +9,23 @@ import com.example.tokemapp.Model.ListBunga
 import com.example.tokemapp.Model.listBunga
 
 class BungaViewModel : ViewModel() {
+    var kategori: MutableLiveData<String> = MutableLiveData("")
     var _listBunga:MutableLiveData<MutableList<ListBunga>> = MutableLiveData<MutableList<ListBunga>>(
         listBunga
     )
+    var searchQuery: MutableLiveData<String> = MutableLiveData("")
     val listBungacuy:LiveData<MutableList<ListBunga>>
         get() = _listBunga
+
+    val getSearchQuery: LiveData<String>
+        get() = searchQuery
 
     fun increment(posisi: Int){
         _listBunga.value?.get(posisi)!!.counter+=1
     }
+
+    val getKategori: LiveData<String>
+        get() = kategori
 
     fun decrement(posisi: Int,konteks: Context){
         if (_listBunga.value?.get(posisi)!!.counter <= 0){
