@@ -31,9 +31,9 @@ class AdapterReview(val listReview: List<ReviewModel>,val konteks: Context):Recy
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
         val binding = listReview[position]
 
-        holder.tvNama.text = binding.nama
-        holder.tvJudulReview.text = binding.judul
-        holder.tvReview.text = binding.deskripsi
+        holder.tvNama.text = "Nama Pereview : ${binding.nama}"
+        holder.tvJudulReview.text = "Judul Review : ${binding.judul}"
+        holder.tvReview.text = "Review : ${binding.deskripsi}"
 
     }
 }

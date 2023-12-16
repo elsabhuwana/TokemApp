@@ -8,26 +8,26 @@
     tools:context=".View.Fragment.ReviewFragment" >
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnCancelReview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintEnd_toStartOf="@+id/btnPostReview"
         app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.64" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnPostReview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="52dp"
         android:text="Post"
-        app:layout_constraintBottom_toBottomOf="@+id/button3"
+        app:layout_constraintBottom_toBottomOf="@+id/btnCancelReview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button3"
+        app:layout_constraintTop_toTopOf="@+id/btnCancelReview"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -38,14 +38,14 @@
         app:layout_constraintGuide_begin="100dp" />
 
     <EditText
-        android:id="@+id/editTextText4"
+        android:id="@+id/etJudulReview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Masukkan Judul"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine2"
+        app:layout_constraintBottom_toTopOf="@+id/etReviewProduk"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.179"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +53,7 @@
         app:layout_constraintVertical_bias="0.509" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine2"
+        android:id="@+id/etReviewProduk"
         android:layout_width="0dp"
         android:layout_height="81dp"
         android:layout_marginBottom="20dp"
@@ -64,7 +64,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextText4" />
+        app:layout_constraintStart_toStartOf="@+id/etJudulReview" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline13"
@@ -79,9 +79,9 @@
         android:layout_height="wrap_content"
         android:text="Review Produk"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="@+id/button4"
-        app:layout_constraintStart_toStartOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/btnCancelReview"
+        app:layout_constraintEnd_toEndOf="@+id/btnPostReview"
+        app:layout_constraintStart_toStartOf="@+id/btnCancelReview"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

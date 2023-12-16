@@ -1,6 +1,7 @@
 package com.example.tokemapp.View.Fragment
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -70,6 +71,8 @@ class PembelianFragment : Fragment() {
         tvJudulBunga.text = judul.toString()
         tvDeskripsiBunga.text = deskripsi.toString()
 
+        tvDeskripsiBunga.movementMethod = ScrollingMovementMethod()
+
         SetCounter(harga!!)
         viewHargaTotal()
 
@@ -83,7 +86,7 @@ class PembelianFragment : Fragment() {
             if (namaPembeli.isEmpty() || alamatPembeli.isEmpty() || nomorHp.isEmpty()){
                 Toast.makeText(requireContext(), "Silahkan Isi Semua Field", Toast.LENGTH_SHORT).show()
             }else{
-                addDataToFirestore(namaPembeli,alamatPembeli,nomorHp,judul!!,deskripsi!!,"https://2.bp.blogspot.com/-AdFojCFxcik/VGGRGfz2-7I/AAAAAAAAAnE/LjwSW-L1EKU/s1600/Bunga%2BKamboja.jpg")
+                addDataToFirestore(namaPembeli,alamatPembeli,nomorHp,judul!!,deskripsi!!,gambar!!)
             }
         }
 

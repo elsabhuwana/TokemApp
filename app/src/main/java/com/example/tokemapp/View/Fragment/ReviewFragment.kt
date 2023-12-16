@@ -5,29 +5,34 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import com.example.tokemapp.Model.UserModel
 import com.example.tokemapp.R
+import com.example.tokemapp.ViewModel.UserViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ReviewFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ReviewFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var etJudul: EditText
+    private lateinit var etReview: EditText
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var btnPost: Button
+    private lateinit var btnCancel: Button
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -38,23 +43,69 @@ class ReviewFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_review, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ReviewFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ReviewFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        etJudul = view.findViewById(R.id.etJudulReview)
+        etReview = view.findViewById(R.id.etReviewProduk)
+        firestore = FirebaseFirestore.getInstance()
+        firebaseAuth = FirebaseAuth.getInstance()
+        btnPost = view.findViewById(R.id.btnPostReview)
+        btnCancel = view.findViewById(R.id.btnCancelReview)
+
+        val idBunga = arguments?.getString("idBunga")
+
+        GlobalScope.launch { getUserDataFromFirestore() }
+
+        btnCancel.setOnClickListener {
+           requireActivity().supportFragmentManager.popBackStack()
+        }
+        userViewModel.userReview.observe(viewLifecycleOwner){newValue ->
+            btnPost.setOnClickListener {
+                if (newValue.size == 0){
+                    Toast.makeText(requireContext(), "Tunggu Dulu", Toast.LENGTH_SHORT).show()
+                }else{
+                    val judul = etJudul.text
+                    val review = etReview.text
+                    addDataReview(idBunga!!,userViewModel.userReview.value?.get(0)!!.nama,review.toString(),judul.toString())
                 }
             }
+
+        }
+
+
+
     }
+
+    suspend fun getUserDataFromFirestore(){
+        val dataUser = firestore.collection("user").whereEqualTo("email",firebaseAuth.currentUser!!.email.toString()).get().await()
+        withContext(Dispatchers.IO){
+            dataUser?.let {document ->
+                val user = document.map { doc ->
+                    UserModel(
+                        doc.id,
+                        doc.getString("email")?:"",
+                        doc.getString("nama")?:"",
+                        doc.getString("password")?:"",
+                        doc.getString("tanggalLahir")?:""
+                    )
+                }
+                userViewModel._userReview.postValue(user.toMutableList())
+
+            }
+        }
+    }
+
+    fun addDataReview(id: String,nama: String,review: String,judul:String){
+        val reviewBos = hashMapOf(
+            "nama" to nama,
+            "judul" to judul,
+            "review" to review
+        )
+        firestore.collection("bunga").document(id).collection("review").add(reviewBos).addOnSuccessListener {
+            Toast.makeText(requireContext(), "Berhasil Menambahkan Review", Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener {
+            Toast.makeText(requireContext(), "Gagal Menambahkan Review", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 }

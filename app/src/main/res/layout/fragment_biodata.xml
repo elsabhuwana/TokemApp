@@ -24,7 +24,7 @@
         app:srcCompat="@drawable/user_image" />
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/btnBackBiodata"
         android:layout_width="47dp"
         android:layout_height="33dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,7 +39,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Edit Biodata"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView12"
         app:layout_constraintEnd_toEndOf="@+id/imageView12"
@@ -49,26 +49,81 @@
         app:layout_constraintVertical_bias="0.795" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tvEmailBiodata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="456dp"
-        android:text="TextView"
+        android:layout_marginTop="20dp"
+        android:text="Email"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView12"
-        app:layout_constraintStart_toStartOf="@+id/imageView12" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
     <ImageView
-        android:id="@+id/imageView16"
+        android:id="@+id/btnUpdateProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.741"
+        app:layout_constraintTop_toBottomOf="@+id/etTanggalLahirBiodata"
+        app:layout_constraintVertical_bias="0.268"
         app:srcCompat="@drawable/rectangle" />
+
+    <EditText
+        android:id="@+id/etNamaLengkapBiodata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Nama Lengkap"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmailBiodata" />
+
+    <EditText
+        android:id="@+id/etUpdatePasswordBiodata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Update Password"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etNamaLengkapBiodata"
+        app:layout_constraintTop_toBottomOf="@+id/etNamaLengkapBiodata" />
+
+    <EditText
+        android:id="@+id/etTanggalLahirBiodata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Tanggal Lahir"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etUpdatePasswordBiodata"
+        app:layout_constraintTop_toBottomOf="@+id/etUpdatePasswordBiodata" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Profile"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnUpdateProfile"
+        app:layout_constraintEnd_toEndOf="@+id/btnUpdateProfile"
+        app:layout_constraintStart_toStartOf="@+id/btnUpdateProfile"
+        app:layout_constraintTop_toTopOf="@+id/btnUpdateProfile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

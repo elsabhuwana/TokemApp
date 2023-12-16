@@ -70,7 +70,8 @@ class KeranjangFragment : Fragment() {
                      (doc["harga"] as? Number)?.toInt()?:0,
                      doc.getString("namaPembeli")?:"",
                      doc.getString("alamat")?:"",
-                     doc.getString("nomorHp")?:""
+                     doc.getString("nomorHp")?:"",
+                     doc.getString("gambar")?:""
                  )
 
              }

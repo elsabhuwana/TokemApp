@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.replace
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.tokemapp.Model.ListBunga
 import com.example.tokemapp.Model.ReviewModel
 import com.example.tokemapp.R
@@ -50,7 +51,7 @@ class AdapterBeranda (val list:List<ListBunga>, val konteks: Context, val viewmo
         holder.tvNamaBunga.text = binding.nama
         holder.tvHargaBunga.text = "Harga Mulai Dari Rp ${binding.harga.toString()}"
         holder.tvStockBunga.text = " Stock ${binding.stok.toString()}"
-        holder.gambarBunga.setImageResource(binding.gambarResId)
+        Glide.with(konteks).load(binding.gambarResId).placeholder(R.drawable.lili).into(holder.gambarBunga)
 
         holder.incrementButton.setOnClickListener {
             viewmodel.increment(position)
@@ -67,6 +68,7 @@ class AdapterBeranda (val list:List<ListBunga>, val konteks: Context, val viewmo
             bundle.putString("judul",binding.nama)
             bundle.putString("deskripsi",binding.deskripsi)
             bundle.putInt("harga",binding.harga)
+            bundle.putString("id",binding.id)
             bundle.putString("gambar",binding.gambarResId.toString())
             bundle.putInt("counter",binding.counter)
             val detailFragment = DetailBungaFragment()
@@ -89,6 +91,7 @@ class AdapterBeranda (val list:List<ListBunga>, val konteks: Context, val viewmo
             bundle.putString("judul",binding.nama)
             bundle.putString("deskripsi",binding.deskripsi)
             bundle.putInt("harga",binding.harga)
+            bundle.putString("gambar",binding.gambarResId)
             val transaksi = fragment.beginTransaction()
             val toPembelianFrag = PembelianFragment()
             toPembelianFrag.arguments = bundle

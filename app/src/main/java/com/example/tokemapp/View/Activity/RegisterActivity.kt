@@ -9,12 +9,13 @@ import android.widget.Toast
 import com.example.tokemapp.R
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
 
 class RegisterActivity : AppCompatActivity() {
     val db = Firebase.firestore
     lateinit var firebaseAuthReg: FirebaseAuth
-
+    private lateinit var firestore: FirebaseFirestore
 
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
@@ -25,6 +26,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         firebaseAuthReg = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
 
         emailEditText = findViewById(R.id.editTextEmail)
         passwordEditText = findViewById(R.id.editTextPassword)
@@ -42,9 +44,7 @@ class RegisterActivity : AppCompatActivity() {
 
                 // Tambahkan logika untuk menyimpan data pengguna ke database
                 firebaseAuthReg.createUserWithEmailAndPassword(email,password).addOnSuccessListener {
-                    Toast.makeText(this, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show()
-                    val pindah = Intent(this, LoginActivity::class.java)
-                    startActivity(pindah)
+                    addDataUserToFirestore(email,password)
                 }.addOnFailureListener {
                     Toast.makeText(this, "Pendaftaran Gagal", Toast.LENGTH_SHORT).show()
 
@@ -60,5 +60,22 @@ class RegisterActivity : AppCompatActivity() {
         // Implementasikan validasi email, password, dan konfirmasi password sesuai kebutuhan
         // Anda bisa melakukan validasi seperti memeriksa apakah email valid dan apakah password dan konfirmasi password sesuai
         return email.isNotEmpty() && password.isNotEmpty() && password == confirmPassword
+    }
+
+    fun addDataUserToFirestore(email: String,password: String){
+        val userMap = hashMapOf(
+            "email" to email,
+            "nama" to "",
+            "password" to password,
+            "tanggalLahir" to ""
+        )
+
+        firestore.collection("user").add(userMap).addOnSuccessListener {
+            Toast.makeText(this, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show()
+            val pindah = Intent(this, LoginActivity::class.java)
+            startActivity(pindah)
+        }.addOnFailureListener {
+            Toast.makeText(this, "Pendaftaran Gagal", Toast.LENGTH_SHORT).show()
+        }
     }
 }
